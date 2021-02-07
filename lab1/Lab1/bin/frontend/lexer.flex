@@ -87,7 +87,7 @@ Alpha      = [a-zA-Z]
 
 //Literals
 {Digits}+            {return token(INT_LITERAL);}
-\"[^\"\n]*\"					 {return token(STRING_LITERAL,yytext().substring(1,yytext().length()-1));}
+\"[^\"\n]*\"		{return token(STRING_LITERAL,yytext().substring(1,yytext().length()-1));}
  
 {WhiteSpace} {}
 

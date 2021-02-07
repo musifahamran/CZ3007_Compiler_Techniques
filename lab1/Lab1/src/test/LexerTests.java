@@ -63,9 +63,9 @@ public class LexerTests {
 				new Token(EOF, 0, 3, ""));
 	}
 	@Test
-	public void testStringLiteralWithDQuote() {
-		runtest("a\"",
-				new Token(STRING_LITERAL, 0, 0, "a\""),
+	public void testStringLiteralW() {
+		runtest("\"a\"",
+				new Token(STRING_LITERAL, 0, 0, "a"),
 				(Token)null,
 				new Token(EOF, 0, 3, ""));
 	}
@@ -75,6 +75,86 @@ public class LexerTests {
 		runtest("\"\\n\"", 
 				new Token(STRING_LITERAL, 0, 0, "\\n"),
 				new Token(EOF, 0, 4, ""));
+	}
+	
+	//Reference Tests
+	@Test
+	public void testStringLiteralSimpel() {
+		runtest("\"asf\"", 
+				new Token(STRING_LITERAL, 0, 0, "asf"),
+				new Token(EOF, 0, 5, ""));
+
+	}
+	
+	@Test
+	public void testPunctuation() {
+		runtest("[]{}()", 
+				new Token(LBRACKET, 0, 0, "["),
+				new Token(RBRACKET, 0, 1, "]"),
+				new Token(LCURLY, 0, 2, "{"),
+				new Token(RCURLY, 0, 3, "}"),
+				new Token(LPAREN, 0, 4, "("),
+				new Token(RPAREN, 0, 5, ")"),
+				new Token(EOF, 0, 6, ""));
+
+	}
+	
+	@Test
+	public void testInt() {
+		runtest("1234", 
+				new Token(INT_LITERAL, 0, 0, "1234"),
+				new Token(EOF, 0, 4, ""));
+	}
+	
+	@Test
+	public void testIntWithLeadingZeros() {
+		runtest("030", 
+				new Token(INT_LITERAL, 0, 0, "030"),
+				new Token(EOF, 0, 3, ""));
+	}
+	
+	@Test
+	public void testSignedInt() {
+		runtest("-123", 
+				new Token(MINUS, 0, 0, "-"),
+				new Token(INT_LITERAL, 0, 1, "123"),
+				new Token(EOF, 0, 4, ""));
+	}
+	
+	@Test
+	public void testDeclaration() {
+		runtest("int x_1 = \"hello world\"", 
+				new Token(INT, 0, 0, "int"),
+				new Token(ID, 0, 4, "x_1"),
+				new Token(EQL, 0, 8, "="),
+				new Token(STRING_LITERAL, 0, 10, "hello world"),
+				new Token(EOF, 0, 23, ""));
+	}
+	
+	@Test
+	public void testEquals() {
+		runtest("===", 
+				new Token(EQEQ, 0, 0, "=="),
+				new Token(EQL, 0, 2, "="),
+				new Token(EOF, 0, 3, ""));
+	}
+	
+	@Test
+	public void testBooleanExpression() {
+		runtest("true == false", 
+				new Token(TRUE, 0, 0, "true"),
+				new Token(EQEQ, 0, 5, "=="),
+				new Token(FALSE, 0, 8, "false"),
+				new Token(EOF, 0, 13, ""));
+	}
+	
+	@Test
+	public void testRandomBooleanExpression() {
+		runtest("\"true\" >= +", 
+				new Token(STRING_LITERAL, 0, 0, "true"),
+				new Token(GEQ, 0, 7, ">="),
+				new Token(PLUS, 0, 10, "+"),
+				new Token(EOF, 0, 11, ""));
 	}
 
 
