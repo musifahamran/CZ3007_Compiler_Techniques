@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="LexerTests" project="Lab1" tests="4" started="4" failures="0" errors="0" ignored="0">
+  <testsuite name="test.LexerTests" time="0.015">
+    <testcase name="testStringLiteral" classname="test.LexerTests" time="0.014"/>
+    <testcase name="testKWs" classname="test.LexerTests" time="0.0"/>
+    <testcase name="testStringLiteralWithDoubleQuote" classname="test.LexerTests" time="0.0"/>
+    <testcase name="testStringLiteralWithDQuote" classname="test.LexerTests" time="0.001"/>
+  </testsuite>
+</testrun>
