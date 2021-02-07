@@ -133,10 +133,10 @@ public class LexerTests {
 	
 	@Test
 	public void testEquals() {
-		runtest("*", 
-				new Token(TIMES, 0, 0, "*"),
-				//new Token(EQL, 0, 2, "="),
-				new Token(EOF, 0, 1, ""));
+		runtest("===", 
+				new Token(EQEQ, 0, 0, "=="),
+				new Token(EQL, 0, 2, "="),
+				new Token(EOF, 0, 3, ""));
 	}
 	
 	@Test

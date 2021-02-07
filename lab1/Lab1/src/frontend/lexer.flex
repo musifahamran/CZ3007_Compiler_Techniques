@@ -62,10 +62,10 @@ Alpha      = [a-zA-Z]
 /* punctuation */
 "," {return token(COMMA); }
 "[" {return token(LBRACKET); }
-"]" {return token(RBRACKET); }
 "{" {return token(LCURLY); }
-"}" {return token(RCURLY); }
 "(" {return token(LPAREN); }
+"]" {return token(RBRACKET); }
+"}" {return token(RCURLY); }
 ")" {return token(RPAREN); }
 ";" {return token(SEMICOLON); }
 
