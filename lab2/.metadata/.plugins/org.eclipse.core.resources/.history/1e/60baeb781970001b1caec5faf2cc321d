@@ -95,16 +95,6 @@ ElseStatement = ELSE Statement
 			| 
 			;
 			
-WhileStatement = WHILE LPAREN Expression RPAREN Statement;
-
-BreakStatement = BBREAK SEMICOLON;
-
-ReturnStatement = RETURN SEMICOLON
-				| RETURN Expression SEMICOLON
-				;
-		
-ExpressionStatement = Expression SEMICOLON;		
-		
 /**/
 
 /* Dummy rule to make the lexer compile. Remove this once you have written all other rules. */	  

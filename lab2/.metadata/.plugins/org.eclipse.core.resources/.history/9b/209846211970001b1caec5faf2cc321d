@@ -33,78 +33,8 @@
 		  ;
   */
 
-Module = MODULE ID LCURLY Imports Declarations RCURLY;
+Module = ;
 
-Imports = Import Imports
-		  |
-		  ;
-		  
-Import = IMPORT ID SEMICOLON;
-
-Declarations = Declaration Declarations
-		  |
-		  ;
-		  
-Declaration = FunctionDeclaration
-		  | FieldDeclaration
-		  | TypeDeclaration
-		  ;
-		  
-FunctionDelcaration = Accessibility TypeName ID LPAREN ParameterList RPAREN LCURLY StatementList RCURLY;
-
-FieldDeclaration = Accessibility TypeName ID SEMICOLON;
-
-TypeDeclaration = Accessibility TYPE ID EQL STRING_LITERAL SEMICOLON;
-
-TypeName = PrimitiveType
-		  | ArrayType
-		  | ID
-		  ;
-		  
-PrimitiveType = VOID
-			| BOOLEAN
-			| INT
-			;
-			
-ArrayType = ArrayType LBRACKET RBRACKET
-			| PrimitiveType LBRACKET RBRACKET
-			| ID LBRACKET RBRACKET
-			;
-			
-ParameterList = ParameterList COMMA Parameter
-			|
-			;
-			
-Parameter = TypeName ID;
-
-StatementList = StatementList Statement
-			| 
-			;
-
-Statement = LocalVar
-		| BlockOfStatements
-		;
-
-LocalVar = TypeName ID SEMICOLON;
-
-BlockOfStatements = LCURLY StatementList RCURLY;
-
-IfStatement = IF LPAREN Expression RPAREN Statement ElseStatement; 
-
-ElseStatement = ELSE Statement
-			| 
-			;
-			
-WhileStatement = WHILE LPAREN Expression RPAREN Statement;
-
-BreakStatement = BBREAK SEMICOLON;
-
-ReturnStatement = RETURN SEMICOLON
-				| RETURN Expression SEMICOLON
-				;
-		
-ExpressionStatement = Expression SEMICOLON;		
-		
 /**/
 
 /* Dummy rule to make the lexer compile. Remove this once you have written all other rules. */	  

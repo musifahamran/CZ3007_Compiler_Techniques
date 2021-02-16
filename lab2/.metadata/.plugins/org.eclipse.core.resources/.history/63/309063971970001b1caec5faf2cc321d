@@ -99,11 +99,13 @@ WhileStatement = WHILE LPAREN Expression RPAREN Statement;
 
 BreakStatement = BBREAK SEMICOLON;
 
-ReturnStatement = RETURN SEMICOLON
-				| RETURN Expression SEMICOLON
-				;
+ReturnStatement = RETURN OptionalExp SEMICOLON;	
+
+OptionalExp = Expression
+		|
+		;
 		
-ExpressionStatement = Expression SEMICOLON;		
+		
 		
 /**/
 
