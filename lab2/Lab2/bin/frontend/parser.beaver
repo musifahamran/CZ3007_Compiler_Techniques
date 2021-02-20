@@ -22,16 +22,11 @@
 // declaration of start symbol; no need to change this
 %goal Module;
 
-// temporary declaration, you can remove this once you have written all other rules
-%goal Dummy;
-
 /* TODO: Flesh out the rule for Module, and add rules for other nonterminals. Here is an example
          of a rule you may want to add:
-         
-   Accessibility = PUBLIC
-		  |
-		  ;
-  */
+*/         
+  
+ 
 
 Module = MODULE ID LCURLY Imports Declarations RCURLY;
 
@@ -50,12 +45,14 @@ Declaration = FunctionDeclaration
 		  | TypeDeclaration
 		  ;
 		  
-FunctionDelcaration = Accessibility TypeName ID LPAREN ParameterList RPAREN LCURLY StatementList RCURLY;
+FunctionDeclaration = Accessibility TypeName ID LPAREN ParameterList RPAREN LCURLY StatementList RCURLY;
 
 FieldDeclaration = Accessibility TypeName ID SEMICOLON;
 
 TypeDeclaration = Accessibility TYPE ID EQL STRING_LITERAL SEMICOLON;
-
+ Accessibility = PUBLIC
+		  |
+		  ;
 TypeName = PrimitiveType
 		  | ArrayType
 		  | ID
@@ -70,43 +67,124 @@ ArrayType = ArrayType LBRACKET RBRACKET
 			| PrimitiveType LBRACKET RBRACKET
 			| ID LBRACKET RBRACKET
 			;
+/*Needs checking*/
 			
-ParameterList = ParameterList COMMA Parameter
-			|
-			;
-			
+ParameterList = ParameterListTail
+              | 
+              ;
+ParameterListTail = Parameter COMMA ParameterListTail
+              | Parameter
+              ;
+              
 Parameter = TypeName ID;
-
-StatementList = StatementList Statement
-			| 
-			;
 
 Statement = LocalVar
 		| BlockOfStatements
+		| IfStatement
+		|WhileStatement
+		|BreakStatement
+		|ReturnStatement
+		|ExpressionStatement
 		;
 
 LocalVar = TypeName ID SEMICOLON;
 
 BlockOfStatements = LCURLY StatementList RCURLY;
-
-IfStatement = IF LPAREN Expression RPAREN Statement ElseStatement; 
-
-ElseStatement = ELSE Statement
+StatementList = Statement StatementList
 			| 
 			;
+IfStatement = IF LPAREN Expression RPAREN Statement
+			| IF LPAREN Expression RPAREN Statement ELSE Statement
+			; 
 			
 WhileStatement = WHILE LPAREN Expression RPAREN Statement;
 
-BreakStatement = BBREAK SEMICOLON;
+BreakStatement = BREAK SEMICOLON;
 
 ReturnStatement = RETURN SEMICOLON
 				| RETURN Expression SEMICOLON
 				;
 		
 ExpressionStatement = Expression SEMICOLON;		
-		
+
+Expression = Assignment
+			|RHSExpression
+			;
+			
+Assignment = LHSExpression EQL Expression;
+
+LHSExpression =ID
+			  |ArrayAccess
+			  ;
+
+ArrayAccess = ID LBRACKET Expression RBRACKET
+				| ArrayAccess LBRACKET Expression RBRACKET
+				;
+
+RHSExpression = ArithmetricExpression
+			| ArithmetricExpression ComparisonOperator ArithmetricExpression
+			;
+
+ComparisonOperator =EQEQ
+ 					|NEQ
+ 					|LT
+ 					|LEQ
+ 					|GT
+ 					|GEQ
+ 					;
+ 					
+ ArithmetricExpression = ArithmetricExpression AdditiveOperator Term
+ 						| Term
+ 						;
+ 
+ AdditiveOperator =PLUS
+ 				  |MINUS
+ 				  ;
+ 
+ Term = Term MultiplicativeOperator Factor
+ 	  | Factor
+ 	  ;
+
+MultiplicativeOperator = TIMES
+						|DIV
+						|MOD
+						;
+
+Factor = MINUS Factor
+		|PrimaryExpression
+		;
+
+PrimaryExpression = LHSExpression
+					|FunctionCall
+					|ArrayExpression
+					|STRING_LITERAL
+					|INT_LITERAL
+					|TRUE
+        			|FALSE
+					|ParanthesisedExpression
+					;
+
+FunctionCall = ID LPAREN ExpressionList RPAREN;
+
+/*Expression -> Needs checking*/
+ExpressionList = ExpressionListTail
+               |
+               ;    
+ExpressionListTail =  Expression 
+						| Expression COMMA ExpressionListTail
+						; 
+
+NonEmptyExpressionList = Expression COMMA NonEmptyExpressionList
+					| Expression
+					;	
+
+ArrayExpression = LBRACKET NonEmptyExpressionList RBRACKET
+				; 
+//Boolean = 
+       // ;
+        
+ParanthesisedExpression = LPAREN Expression RPAREN
+						;   
+
 /**/
 
-/* Dummy rule to make the lexer compile. Remove this once you have written all other rules. */	  
-Dummy = MODULE INT VOID IF ELSE WHILE RETURN BREAK BOOLEAN PUBLIC TRUE FALSE INT_LITERAL STRING_LITERAL ID TYPE IMPORT
-           PLUS MINUS TIMES DIV MOD EQEQ NEQ LEQ GEQ LT GT LBRACKET RPAREN COMMA RCURLY LCURLY SEMICOLON RBRACKET LPAREN EQL;
