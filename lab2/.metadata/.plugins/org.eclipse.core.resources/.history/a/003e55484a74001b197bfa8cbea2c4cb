@@ -134,7 +134,7 @@ ComparisonOperator =EQEQ
  					|GEQ
  					;
  					
- ArithmetricExpression =  Term AdditiveOperator ArithmetricExpression
+ ArithmetricExpression = ArithmetricExpression AdditiveOperator Term
  						| Term
  						;
  
@@ -172,8 +172,8 @@ ExpressionList = ExpressionListTail
                |
                ;    
 ExpressionListTail =  Expression 
-				| Expression COMMA ExpressionListTail
-				; 
+						| Expression COMMA ExpressionListTail
+						; 
 
 NonEmptyExpressionList = Expression COMMA NonEmptyExpressionList
 					| Expression

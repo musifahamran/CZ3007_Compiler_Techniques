@@ -50,8 +50,7 @@ FunctionDeclaration = Accessibility TypeName ID LPAREN ParameterList RPAREN LCUR
 FieldDeclaration = Accessibility TypeName ID SEMICOLON;
 
 TypeDeclaration = Accessibility TYPE ID EQL STRING_LITERAL SEMICOLON;
-
-Accessibility = PUBLIC
+ Accessibility = PUBLIC
 		  |
 		  ;
 TypeName = PrimitiveType
@@ -82,10 +81,10 @@ Parameter = TypeName ID;
 Statement = LocalVar
 		| BlockOfStatements
 		| IfStatement
-		| WhileStatement
-		| BreakStatement
-		| ReturnStatement
-		| ExpressionStatement
+		|WhileStatement
+		|BreakStatement
+		|ReturnStatement
+		|ExpressionStatement
 		;
 
 LocalVar = TypeName ID SEMICOLON;
@@ -134,7 +133,7 @@ ComparisonOperator =EQEQ
  					|GEQ
  					;
  					
- ArithmetricExpression =  Term AdditiveOperator ArithmetricExpression
+ ArithmetricExpression = ArithmetricExpression AdditiveOperator Term
  						| Term
  						;
  
@@ -172,8 +171,8 @@ ExpressionList = ExpressionListTail
                |
                ;    
 ExpressionListTail =  Expression 
-				| Expression COMMA ExpressionListTail
-				; 
+						| Expression COMMA ExpressionListTail
+						; 
 
 NonEmptyExpressionList = Expression COMMA NonEmptyExpressionList
 					| Expression
@@ -181,7 +180,9 @@ NonEmptyExpressionList = Expression COMMA NonEmptyExpressionList
 
 ArrayExpression = LBRACKET NonEmptyExpressionList RBRACKET
 				; 
-
+//Boolean = 
+       // ;
+        
 ParanthesisedExpression = LPAREN Expression RPAREN
 						;   
 

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="ParserTests" project="Lab2" tests="28" started="28" failures="0" errors="0" ignored="0">
+  <testsuite name="test.ParserTests" time="0.193">
+    <testcase name="testModuleWithModuleDeclarations_FunctionDeclaration_BreakStatement" classname="test.ParserTests" time="0.044"/>
+    <testcase name="testModuleWithModuleDeclarations_FunctionDeclaration_WhileStatement" classname="test.ParserTests" time="0.003"/>
+    <testcase name="testModuleWithImports" classname="test.ParserTests" time="0.0"/>
+    <testcase name="testTerm" classname="test.ParserTests" time="0.002"/>
+    <testcase name="testRHSAssignment" classname="test.ParserTests" time="0.002"/>
+    <testcase name="testBlockStatement" classname="test.ParserTests" time="0.036"/>
+    <testcase name="testBreakStatement" classname="test.ParserTests" time="0.0"/>
+    <testcase name="testWhileStatement" classname="test.ParserTests" time="0.001"/>
+    <testcase name="testReturnStatement" classname="test.ParserTests" time="0.0"/>
+    <testcase name="testArithmeticExpression" classname="test.ParserTests" time="0.002"/>
+    <testcase name="testModuleWithModuleDeclarations_FieldDeclaration" classname="test.ParserTests" time="0.001"/>
+    <testcase name="testLocalVariableDeclaration" classname="test.ParserTests" time="0.023"/>
+    <testcase name="testAssignment" classname="test.ParserTests" time="0.001"/>
+    <testcase name="testEmptyModule" classname="test.ParserTests" time="0.0"/>
+    <testcase name="testModuleWithModuleDeclarations_FunctionDeclaration_ExpressionStatement" classname="test.ParserTests" time="0.0"/>
+    <testcase name="testArrayExpression" classname="test.ParserTests" time="0.0"/>
+    <testcase name="testModuleWithModuleDeclarations_FunctionDeclaration_LocalVariable" classname="test.ParserTests" time="0.0"/>
+    <testcase name="testParenthesisExpression" classname="test.ParserTests" time="0.003"/>
+    <testcase name="testFunctionCall" classname="test.ParserTests" time="0.032"/>
+    <testcase name="testIfStatement" classname="test.ParserTests" time="0.001"/>
+    <testcase name="testModuleWithModuleDeclarations_FunctionDeclaration_ReturnStatement" classname="test.ParserTests" time="0.015"/>
+    <testcase name="testModuleWithModuleDeclarations_FunctionDeclaration_EmptyStatement" classname="test.ParserTests" time="0.005"/>
+    <testcase name="testModuleWithModuleDeclarations_Function_Declaration_IfStatement" classname="test.ParserTests" time="0.007"/>
+    <testcase name="testFactor" classname="test.ParserTests" time="0.002"/>
+    <testcase name="testModuleWithInvalidImports" classname="test.ParserTests" time="0.007"/>
+    <testcase name="testExpressionStatement" classname="test.ParserTests" time="0.001"/>
+    <testcase name="testBooleanLiteral" classname="test.ParserTests" time="0.001"/>
+    <testcase name="testModuleWithModuleDeclarations_TypeDeclaration" classname="test.ParserTests" time="0.003"/>
+  </testsuite>
+</testrun>
