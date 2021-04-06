@@ -177,11 +177,10 @@ public class CompilerTests {
 	@Test public void testWhile(){
 		runtest("module HelloWorld{" +
 	    " public void hello() {" +
-				"int i;" +
-				"i =1;" +
-				"while(i<2) {" +
+				+ "x = 1" +
+				"while(x==1) {" +
 				"println(\"Hello, world!\");"+
-				"i = i+1;"+
+				"x++"+
 	    "}"+
 				"}" +
 				"}",

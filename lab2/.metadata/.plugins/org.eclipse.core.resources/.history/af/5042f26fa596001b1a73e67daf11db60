@@ -181,7 +181,7 @@ public class CompilerTests {
 				"i =1;" +
 				"while(i<2) {" +
 				"println(\"Hello, world!\");"+
-				"i = i+1;"+
+				"x++;"+
 	    "}"+
 				"}" +
 				"}",
